@@ -18,6 +18,7 @@ Logic:
 Utilized the feedparser library to parse RSS feeds, which simplifies the extraction of information from websites.
 Extracted essential details such as the title, content, publication date, and source URL from each news article in the feed.
 Ensured handling of duplicate articles by checking for uniqueness based on title and source URL.
+
 ![Blank diagram](https://github.com/ryback39111/Rss_feedparser-using-celery/assets/81157736/68513709-5605-4799-8729-cf26838f32d4)
 
 
@@ -26,7 +27,7 @@ Design Choices:
 Chose feedparser due to its simplicity and efficiency in parsing RSS feeds.
 Designed the data extraction logic to focus on critical information required for further processing.
 
-###Database Storage
+### Database Storage
 Logic:
 Selected PostgreSQL as the database to store news article data due to its reliability and relational model.
 Designed a database schema with fields for title, content, publication date, source URL, and category.
@@ -43,14 +44,17 @@ Designed a relational database schema to organize and store the extracted news a
 ![Screenshot 2024-02-04 at 11 44 11 PM](https://github.com/ryback39111/Rss_feedparser-using-celery/assets/81157736/8476f0c2-1c71-41f0-8407-009809e99ddd)
 
 Fig - 3 DataBase in PostgreSQL
+
 ### Task Queue and News Processing:
 Logic:
 Implemented Celery for task queuing to manage asynchronous processing of new articles.
 Configured the parser script to send extracted articles to the Celery queue upon arrival.
 Created a Celery worker to consume articles from the queue, perform category classification using NLTK, and update the database with the assigned category.
+
 ![Blank diagram (1)](https://github.com/ryback39111/Rss_feedparser-using-celery/assets/81157736/49d35841-a9b3-4abe-86f7-398d0857cab1)
 
 Fig - 4 Celery App Architecture 
+
 Design Choices:
 Leveraged Celery for asynchronous task processing to avoid blocking the main application flow.
 Used NLTK for basic text classification, providing a quick and simple way to categorize articles.
