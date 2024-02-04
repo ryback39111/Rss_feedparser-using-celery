@@ -6,7 +6,7 @@ import logging
 # Configure logging
 logging.basicConfig(filename='feed_parser.log', level=logging.INFO)
 
-app = Celery('feed_parser', broker='pyamqp://guest@localhost//')
+app = Celery('feed_parser', broker='amqp://guest:guest@localhost:5672//')
 
 @app.task
 def parse_feed(feed_url):
